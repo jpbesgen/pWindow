@@ -8,12 +8,14 @@ import RPi.GPIO as GPIO, time
 
 # servo motor settings start
 GPIO.setmode(GPIO.BOARD)
+GPIO.setup(2, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 p = GPIO.PWM(16, 500)
 
 def SpinMotor(direction, steps):
 	GPIO.output(18, direction)
+	GPIO.output(2, TRUE)
 	while steps > 0:
 		p.start(1)
 		time.sleep(0.01)
